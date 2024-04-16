@@ -3,39 +3,35 @@
 <head>
   <title>Observation Link</title>
   <script>
-    // Function to display the number of people who opened the main link and link 1, and reset link 1 count
+    // Function to display the number of people who opened link 1 and reset link 1 count
     function displayObservation() {
-      // Fetch data about the number of people who opened the main link and link 1
-      var mainLinkOpenings = getTotalMainLinkOpenings();
+      // Fetch data about the number of people who opened link 1
       var link1Openings = getLink1Openings();
-
+      
       // Display the data
-      alert("Main Link Openings: " + mainLinkOpenings + "\nLink 1 Openings: " + link1Openings);
+      alert("Link 1 Openings: " + link1Openings);
     }
-
-    // Dummy functions to fetch data (replace with actual implementations)
-    function getTotalMainLinkOpenings() {
-      // This function should fetch the total number of people who opened the main link
-      // Replace this with your own implementation (e.g., fetching from a server)
-      return 0; // Dummy value, replace with actual value
-    }
-
+    
+    // Dummy function to fetch data (replace with actual implementation)
     function getLink1Openings() {
       // This function should fetch the number of people who opened link 1
       // Replace this with your own implementation (e.g., fetching from a server)
       return 0; // Dummy value, replace with actual value
     }
-
+    
     function resetLink1Count() {
       // This function should reset the count for link 1
       // Replace this with your own implementation (e.g., resetting a counter)
       alert("Link 1 count has been reset.");
     }
+    
+    // Automatically display observation periodically
+    setInterval(displayObservation, 5000); // Refresh every 5 seconds (adjust as needed)
   </script>
 </head>
-<body>
+<body onload="displayObservation()">
   <!-- Observation link -->
-  <a href="#" onclick="displayObservation()">Observation Link</a>
+  <a href="#" onclick="return false;">Observation Link</a>
   <br>
   <!-- Button to reset link 1 count -->
   <button onclick="resetLink1Count()">Reset Link 1 Count</button>
