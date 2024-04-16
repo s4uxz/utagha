@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Link</title>
+  <script>
+    var link1Count = 0;
+    var totalOpenings = 100;
+    var link1Openings = 8;
+    var link2Openings = totalOpenings - link1Openings;
+    
+    function redirectToRandomLink() {
+      var randomNumber = Math.floor(Math.random() * totalOpenings) + 1;
+      
+      if (randomNumber <= link1Openings) {
+        link1Count++;
+        updateLink1CountDisplay();
+        return 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
+      } else {
+        return 'https://youtu.be/xvFZjo5PgG0';
+      }
+    }
+    
+    function resetLink1Count() {
+      link1Count = 0;
+      updateLink1CountDisplay();
+    }
+
+    function updateLink1CountDisplay() {
+      document.getElementById("link1CountDisplay").innerText = "Link 1 Openings: " + link1Count;
+    }
+
+    function generateRandomLink() {
+      var randomLink = document.createElement('a');
+      randomLink.href = redirectToRandomLink(); // Call redirectToRandomLink to get the link
+      randomLink.textContent = 'Random Link';
+      document.body.appendChild(randomLink);
+      document.body.appendChild(document.createElement('br'));
+    }
+  </script>
+</head>
+<body>
+  <a href="#" onclick="redirectToRandomLink()">Go to Random Link</a>
+  <br>
+  <a href="#" onclick="resetLink1Count()">Reset Link 1 Count</a>
+  <br>
+  <span id="link1CountDisplay">Link 1 Openings: 0</span>
+  <br>
+  <button onclick="generateRandomLink()">Generate Random Link</button>
+</body>
+</html>
