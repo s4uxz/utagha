@@ -4,15 +4,15 @@
   <title>Random Link</title>
   <script>
     var link1Count = 0;
-    var totalOpenings = 100;
-    var link1Openings = 8;
+    var totalOpenings = 5;
+    var link1Openings = 3;
     var link2Openings = totalOpenings - link1Openings;
     
     function redirectToRandomLink() {
       var randomNumber = Math.floor(Math.random() * totalOpenings) + 1;
       var selectedLink;
       
-      if (randomNumber <= link1Openings) {
+      if (link1Count < link1Openings) {
         link1Count++;
         selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
       } else {
@@ -33,8 +33,9 @@
 
     function generateRandomLink() {
       var randomLink = document.createElement('a');
-      randomLink.href = redirectToRandomLink(); // Call redirectToRandomLink to get the link
+      randomLink.href = 'javascript:void(0)';
       randomLink.textContent = 'Random Link';
+      randomLink.onclick = redirectToRandomLink;
       document.body.appendChild(randomLink);
       document.body.appendChild(document.createElement('br'));
     }
