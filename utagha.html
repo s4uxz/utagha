@@ -7,19 +7,21 @@
     var totalOpenings = 100;
     var link1Openings = 8;
     var link2Openings = totalOpenings - link1Openings;
-
+    
     function redirectToRandomLink() {
       var randomNumber = Math.floor(Math.random() * totalOpenings) + 1;
-
+      var selectedLink;
+      
       if (randomNumber <= link1Openings) {
         link1Count++;
-        updateLink1CountDisplay();
-        return 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
+        selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
       } else {
-        return 'https://youtu.be/xvFZjo5PgG0';
+        selectedLink = 'https://youtu.be/xvFZjo5PgG0';
       }
+      
+      window.open(selectedLink, '_blank');
     }
-
+    
     function resetLink1Count() {
       link1Count = 0;
       updateLink1CountDisplay();
