@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Link</title>
+  <script>
+    var link1Count = 0;
+    var totalOpenings = 3;
+    var link1Openings = 1;
+    var link2Openings = totalOpenings - link1Openings;
+
+    function redirectToRandomLink() {
+      if (link1Count < link1Openings) {
+        link1Count++;
+        window.location.href = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
+      } else {
+        window.location.href = 'https://youtu.be/xvFZjo5PgG0';
+      }
+    }
+
+    function resetLink1Count() {
+      link1Count = 0;
+    }
+  </script>
+</head>
+<body>
+  <a href="javascript:void(0);" onclick="redirectToRandomLink()">Go to Random Link</a>
+  <br>
+  <a href="#" onclick="resetLink1Count()">Reset Link 1 Count</a>
+</body>
+</html>
