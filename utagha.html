@@ -3,51 +3,34 @@
 <head>
   <title>Random Link</title>
   <script>
-    var link1Count = 0;
-    var totalOpenings = 5;
-    var link1Openings = 3;
-    var link2Openings = totalOpenings - link1Openings;
-    
+    var link1Count = 0; // Counter for link 1 openings
+    var totalClicks = 0; // Total number of clicks on the main link
+    var link1Limit = 3; // Maximum number of times link 1 can be opened within 10 clicks
+
+    // Function to redirect to either link 1 or link 2
     function redirectToRandomLink() {
-      var randomNumber = Math.floor(Math.random() * totalOpenings) + 1;
-      var selectedLink;
-      
-      if (link1Count < link1Openings) {
-        link1Count++;
-        selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
+      totalClicks++; // Increment total clicks on the main link
+
+      // Generate a random number between 1 and 10
+      var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+      // Check if link 1 can still be opened within the limit and total clicks is within 10
+      if (link1Count < link1Limit && totalClicks <= 10) {
+        link1Count++; // Increment link 1 count
+        // Redirect to link 1
+        window.location.href = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
       } else {
-        selectedLink = 'https://youtu.be/xvFZjo5PgG0';
+        // Redirect to link 2
+        window.location.href = 'https://youtu.be/xvFZjo5PgG0';
       }
-      
-      window.open(selectedLink, '_blank');
-    }
-    
-    function resetLink1Count() {
-      link1Count = 0;
-      updateLink1CountDisplay();
     }
 
-    function updateLink1CountDisplay() {
-      document.getElementById("link1CountDisplay").innerText = "Link 1 Openings: " + link1Count;
-    }
-
-    function generateRandomLink() {
-      var randomLink = document.createElement('a');
-      randomLink.href = 'javascript:void(0)';
-      randomLink.textContent = 'Random Link';
-      randomLink.onclick = redirectToRandomLink;
-      document.body.appendChild(randomLink);
-      document.body.appendChild(document.createElement('br'));
-    }
+    // Automatically redirect to random link when the page is loaded
+    window.onload = redirectToRandomLink;
   </script>
 </head>
 <body>
-  <a href="#" onclick="redirectToRandomLink()">Go to Random Link</a>
-  <br>
-  <a href="#" onclick="resetLink1Count()">Reset Link 1 Count</a>
-  <br>
-  <span id="link1CountDisplay">Link 1 Openings: 0</span>
-  <br>
-  <button onclick="generateRandomLink()">Generate Random Link</button>
+  <!-- Main link -->
+  <a href="#" onclick="redirectToRandomLink()">Main Link</a>
 </body>
 </html>
