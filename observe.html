@@ -3,37 +3,36 @@
 <head>
   <title>Observation Link</title>
   <script>
-    // Function to display the number of people who opened link 1 and reset link 1 count
     function displayObservation() {
-      // Fetch data about the number of people who opened link 1
-      var link1Openings = getLink1Openings();
-      
-      // Display the data
-      alert("Link 1 Openings: " + link1Openings);
+      var totalOpenings = parseInt(localStorage.getItem('totalOpenings')) || 0;
+      var link1Count = parseInt(localStorage.getItem('link1Count')) || 0;
+
+      document.getElementById("totalOpeningsDisplay").innerText = "Total Main Link Openings: " + totalOpenings;
+      document.getElementById("link1CountDisplay").innerText = "Link 1 Openings: " + link1Count;
     }
-    
-    // Dummy function to fetch data (replace with actual implementation)
-    function getLink1Openings() {
-      // This function should fetch the number of people who opened link 1
-      // Replace this with your own implementation (e.g., fetching from a server)
-      return 0; // Dummy value, replace with actual value
-    }
-    
+
     function resetLink1Count() {
-      // This function should reset the count for link 1
-      // Replace this with your own implementation (e.g., resetting a counter)
-      alert("Link 1 count has been reset.");
+      localStorage.setItem('link1Count', 0); // Reset link1Count in localStorage
+      displayObservation(); // Update display
     }
-    
-    // Automatically display observation periodically
-    setInterval(displayObservation, 5000); // Refresh every 5 seconds (adjust as needed)
+
+    function resetTotalOpenings() {
+      localStorage.setItem('totalOpenings', 0); // Reset totalOpenings in localStorage
+      displayObservation(); // Update display
+    }
   </script>
 </head>
 <body onload="displayObservation()">
-  <!-- Observation link -->
-  <a href="#" onclick="return false;">Observation Link</a>
+  <!-- Display for total main link openings -->
+  <div id="totalOpeningsDisplay">Total Main Link Openings: 0</div>
+  <br>
+  <!-- Display for link 1 count -->
+  <div id="link1CountDisplay">Link 1 Openings: 0</div>
   <br>
   <!-- Button to reset link 1 count -->
   <button onclick="resetLink1Count()">Reset Link 1 Count</button>
+  <br>
+  <!-- Button to reset total main link openings -->
+  <button onclick="resetTotalOpenings()">Reset Total Openings</button>
 </body>
 </html>
