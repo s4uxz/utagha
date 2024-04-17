@@ -2,11 +2,33 @@
 <html>
 <head>
   <title>Main Link</title>
+  <style>
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .random-button {
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .random-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
   <script>
     var link1Count = 0;
     var totalOpenings = 0;
-    var maxLink1Openings = 2;
-    var maxTotalOpenings = 5;
+    var maxLink1Openings = 8;
+    var maxTotalOpenings = 100;
 
     function redirectToRandomLink() {
       if (totalOpenings >= maxTotalOpenings) {
@@ -14,27 +36,31 @@
         return;
       }
 
+      var randomNumber = Math.floor(Math.random() * maxTotalOpenings) + 1;
+      var selectedLink;
+
       if (link1Count >= maxLink1Openings) {
-        var selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
+        selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
       } else {
-        var randomNumber = Math.floor(Math.random() * maxTotalOpenings) + 1;
         if (randomNumber <= maxLink1Openings) {
           link1Count++;
-          var selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3'; // Link 1 URL
+          selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3'; // Link 1 URL
         } else {
-          var selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
+          selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
         }
       }
 
       totalOpenings++;
-      localStorage.setItem('totalOpenings', totalOpenings); // Update totalOpenings in localStorage
-      localStorage.setItem('link1Count', link1Count); // Update link1Count in localStorage
+      localStorage.setItem('totalOpenings', totalOpenings);
+      localStorage.setItem('link1Count', link1Count);
 
       window.open(selectedLink, '_blank');
     }
   </script>
 </head>
 <body>
-  <a href="#" onclick="redirectToRandomLink()">Go to Random Link</a>
+  <div class="button-container">
+    <button class="random-button" onclick="redirectToRandomLink()">Go to Random Link</button>
+  </div>
 </body>
 </html>
