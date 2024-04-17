@@ -3,64 +3,41 @@
 <head>
   <title>Main Link</title>
   <style>
-    .button-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .random-button {
-      padding: 20px 40px;
-      font-size: 24px;
-      background-color: #007bff;
+    /* Center align the button */
+    .random-link-button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
     }
-
-    .random-button:hover {
-      background-color: #0056b3;
-    }
   </style>
-  <script>
-    var link1Count = 0;
-    var totalOpenings = 0;
-    var maxLink1Openings = 8;
-    var maxTotalOpenings = 100;
-
-    function redirectToRandomLink() {
-      if (totalOpenings >= maxTotalOpenings) {
-        alert("The maximum number of openings has been reached. The link is now closed.");
-        return;
-      }
-
-      var randomNumber = Math.floor(Math.random() * maxTotalOpenings) + 1;
-      var selectedLink;
-
-      if (link1Count >= maxLink1Openings) {
-        selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
-      } else {
-        if (randomNumber <= maxLink1Openings) {
-          link1Count++;
-          selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3'; // Link 1 URL
-        } else {
-          selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
-        }
-      }
-
-      totalOpenings++;
-      localStorage.setItem('totalOpenings', totalOpenings);
-      localStorage.setItem('link1Count', link1Count);
-
-      window.open(selectedLink, '_blank');
-    }
-  </script>
 </head>
 <body>
-  <div class="button-container">
-    <button class="random-button" onclick="redirectToRandomLink()">Go to Random Link</button>
-  </div>
+  <h1>Main Link</h1>
+  
+  <!-- Button to go to random link -->
+  <button class="random-link-button" onclick="redirectToRandomLink()">Go to Random Link</button>
+  
+  <!-- Script to handle random link redirection -->
+  <script>
+    // Function to redirect to random link
+    function redirectToRandomLink() {
+      // Generate a random number between 1 and 100
+      var randomNumber = Math.floor(Math.random() * 100) + 1;
+      
+      // Redirect to link 1 if the random number is less than or equal to 8
+      if (randomNumber <= 8) {
+        window.location.href = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3';
+      } else {
+        // Redirect to link 2 if the random number is greater than 8
+        window.location.href = 'https://youtu.be/xvFZjo5PgG0';
+      }
+    }
+  </script>
 </body>
 </html>
