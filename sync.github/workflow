@@ -1,0 +1,18 @@
+name: Update Link Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update link data
+        run: |
+          # Perform actions to update link data
+          echo '{"totalOpenings": 10, "link1Count": 5}' > data/link_data.json
