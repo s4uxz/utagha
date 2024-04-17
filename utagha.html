@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Link</title>
+  <script>
+    var link1Count = 0;
+    var totalOpenings = 0;
+    var maxLink1Openings = 2;
+    var maxTotalOpenings = 5;
+
+    function redirectToRandomLink() {
+      if (totalOpenings >= maxTotalOpenings) {
+        alert("The maximum number of openings has been reached. The link is now closed.");
+        return;
+      }
+
+      if (link1Count >= maxLink1Openings) {
+        var selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
+      } else {
+        var randomNumber = Math.floor(Math.random() * maxTotalOpenings) + 1;
+        if (randomNumber <= maxLink1Openings) {
+          link1Count++;
+          var selectedLink = 'https://youtube.com/shorts/c4tL6_6lpSA?si=tnjmN1Yro6YL6mB3'; // Link 1 URL
+        } else {
+          var selectedLink = 'https://youtu.be/xvFZjo5PgG0'; // Link 2 URL
+        }
+      }
+
+      totalOpenings++;
+      localStorage.setItem('totalOpenings', totalOpenings); // Update totalOpenings in localStorage
+      localStorage.setItem('link1Count', link1Count); // Update link1Count in localStorage
+
+      window.open(selectedLink, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <a href="#" onclick="redirectToRandomLink()">Go to Random Link</a>
+</body>
+</html>
